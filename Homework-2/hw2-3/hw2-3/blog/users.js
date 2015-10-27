@@ -30,8 +30,12 @@ function UsersDAO(db) {
 
         // TODO: hw2.3
         //callback target found!!!
-        callback(Error("addUser Not Yet Implemented!"), null);
-    }
+        // callback(Error("addUser Not Yet Implemented!"), null);
+        users.insert(user,function(err,result){
+          "use strict";
+          callback(err,user);
+        });
+        }
 
     this.validateLogin = function(username, password, callback) {
         "use strict";
