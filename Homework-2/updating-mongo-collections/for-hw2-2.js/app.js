@@ -27,12 +27,16 @@ MongoClient.connect('mongodb://localhost:27017/weather', function(err, db) {
         queries.push({
           "State": element["State"],
           "Temperature": element["Temperature"]
-
           });
-        console.dir()
+//        console.dir()
+}
+});
+          queries.forEach (function(query){
+            //we should have four different states with the highest temps for that state.
+            console.log(query);//prints four objects
+          })
 
-        return db.close();
-      }
-    });
+
+        // return db.close();
   });
 });
