@@ -7,6 +7,7 @@
 
 var MongoClient = require('mongodb').MongoClient;
 
+queries = [];
 MongoClient.connect('mongodb://localhost:27017/weather', function(err, db) {
     if(err) throw err;
     //  console.log('connected to: weather');
@@ -14,13 +15,22 @@ MongoClient.connect('mongodb://localhost:27017/weather', function(err, db) {
     var grades = db.collection('data');
 
     var state = '';
-    var cursor = grades.find({}).sort({'State':1,'Temperature':-1}).limit(10);
+    var cursor = grades.find({}).sort({'State':1,'Temperature':-1});
 
 
     cursor.toArray(function(error,doc){
       doc.forEach(function(element){
          if(element["State"] !== state){
-        console.dir(element["State"]+': '+element["Temperature"]);
+        //console.dir(element["State"]+': '+element["Temperature"]);
+        state = element["State"];
+
+        queries.push({
+          "State": element["State"],
+          "Temperature": element["Temperature"]
+
+          });
+        console.dir()
+
         return db.close();
       }
     });
