@@ -35,6 +35,20 @@ MongoClient.connect('mongodb://localhost:27017/weather', function(err, db) {
             //we should have four different states with the highest temps for that state.
             console.log(query);//prints four objects
             var operator = {$set: {'month_high': true}};
+
+            db.collection('data').update(query,operator,function(err,updated){
+              // created the update function where we will use the query and operators parameters and
+              //callback function
+              console.log('updated');
+              return db.close();
+            });
+
+            db.collection('data').find(query,function(err,doc){
+              if (err)  return db.close();
+              console.log(doc)
+            });
+
+
           })
 
 
