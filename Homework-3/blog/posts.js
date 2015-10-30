@@ -31,7 +31,7 @@ function PostsDAO(db) {
 
         // now insert the post
         // hw3.2 TODO
-        callback(Error("insertEntry NYI"), null);
+        //callback(Error("insertEntry NYI"), null);
     }
 
     this.getPosts = function(num, callback) {
@@ -88,10 +88,10 @@ function PostsDAO(db) {
           "use strict";
 
           if (!err) {
-              console.log(inserted);
-              console.log(permalink);
+              //console.log(inserted);
+              //console.log(permalink);
               return callback(null, result);
-              // console.log(updated)
+               console.log(updated)
           }
           callback(err, updated);
 
