@@ -1,3 +1,4 @@
+
 /* The PostsDAO must be constructed with a connected database object */
 function PostsDAO(db) {
     "use strict";
@@ -82,7 +83,8 @@ function PostsDAO(db) {
         }
 
         // hw3.3 TODO
-        callback(Error("addComment NYI"), null);
+      //  callback(Error("addComment NYI"), null);
+        
     }
 }
 
