@@ -84,7 +84,19 @@ function PostsDAO(db) {
 
         // hw3.3 TODO
       //  callback(Error("addComment NYI"), null);
-        
+      posts.update({'permalink':permalink},{'$push':{'comments': comment}}, function (err, updated) {
+          "use strict";
+
+          if (!err) {
+              console.log(inserted);
+              console.log(permalink);
+              return callback(null, result);
+              // console.log(updated)
+          }
+          callback(err, updated);
+
+      });
+
     }
 }
 
