@@ -1,4 +1,6 @@
-/* The PostsDAO must be constructed with a connected database object */
+
+
+        /* The PostsDAO must be constructed with a connected database object */
 function PostsDAO(db) {
     "use strict";
 
@@ -30,7 +32,16 @@ function PostsDAO(db) {
 
         // now insert the post
         // hw3.2 TODO
-        callback(Error("insertEntry Not Yet Implemented!"), null);
+        posts.insert(post, function(err, inserted) {
+                    "use strict";
+                  if (!err) {
+                  console.log(inserted);
+                  // return callback(null, result);
+                  }
+                    callback(err, post.permalink);
+        });
+           // callback(Error("insertEntry NYI"), null);
+
     }
 
     this.getPosts = function(num, callback) {
@@ -82,7 +93,21 @@ function PostsDAO(db) {
         }
 
         // hw3.3 TODO
-        callback(Error("addComment Not Yet Implemented!"), null);
+
+                        posts.update({'permalink':permalink},{'$push':{'comments': comment}}, function (err, updated) {
+                            "use strict";
+
+                            if (!err) {
+                                // console.log(inserted);
+                                // console.log(permalink);
+                                // return callback(null, result);
+                                console.log(updated)
+                            }
+                            callback(err, updated);
+
+                        });
+
+        // callback(Error("addComment NYI"), null);
     }
 }
 
